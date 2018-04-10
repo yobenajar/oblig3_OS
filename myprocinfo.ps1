@@ -53,16 +53,16 @@ while ($ans -ne 9) {
 			$user = $usermode2 - $usermode1
 			$kernel = $kernelmode2 - $kernelmode1
 
-			WriteOutput ($user)
-			Writeoutput ($kernel)
+			Write-Output $user
+			Write-Output $kernel
 
 			$sum = $user + $kernel
 
-			Write-output = ($sum)
+			Write-output $sum
 
 			$prosent = 100 / $sum
 
-			Write-Output ($prosent)
+			Write-Output $prosent
 
 			$usermode = $user * $prosent
 			$kernelmode = $kernel * $prosent
