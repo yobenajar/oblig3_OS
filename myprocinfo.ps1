@@ -58,7 +58,7 @@ while ($ans -ne 9) {
 			$prosent = 100 / $sum
 
 			Write-Output "$user * $prosent % av det siste sekundet til usermode"
-			Write-Output "$kernel * $prosent % av det siste sekundet til kernelmode")
+			Write-Output "$kernel * $prosent % av det siste sekundet til kernelmode"
 		}
 
 		6 {
