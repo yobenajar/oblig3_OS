@@ -20,21 +20,14 @@ while ($ans -ne 9) {
 		1 { Write-Output "Jeg er $(whoami), og scriptet heter $($MyInvocation.MyCommand.Name)" }
 
 		2 {
-			#Write-Output "Tid siden siste boot: $(Get-Uptime)"
-
 			$uptime = (Get-Date) - (Get-CimInstance -ClassName win32_operatingsystem).LastBootUpTime
-            Write-Output("Siste boot: " + $uptime.Hours + "h, " + $uptime.Minutes + "m")
+            Write-Output "Tid siden boot: $uptime.Hours h, $uptime.Minutes m"
 		}
 
 		3 {
-			#$count = 0
-			#Get-Process | ForEach-Object {$count = $([int]$count + $_.Threads.Count)}
-			#Write-Output "Antall prosesser: $([int]@(Get-Process).Count)"
-			#Write-Output "Antall tråder: $($count)"
-
 			$trader = (Get-CimInstance -ClassName win32_Thread | Get-Unique | Measure-Object).Count
             $prosesser = (Get-Process | Sort-Object name| Get-Unique | Measure-Object).count
-            Write-Output ("Det finnes" + $trader + "tråder")
+            Write-Output "Det finnes $trader tråder"
             Write-Output "Det finnes $prosesser prosesser"
 		}
 
@@ -46,15 +39,15 @@ while ($ans -ne 9) {
 		5 {
 			$prosesser = (Get-Process -ComputerName .)
 			foreach ($prosess in $prosesser) {
-				$usermode1 = $userMode1 + $proc.PrivilegedProcessorTime.TotalMilliseconds
-				$kernelmode1 = $kernelmode1 + $proc.PrivilegedProcessorTime.TotalMilliseconds
+				$usermode1 = $userMode1 + $prosess.PrivilegedProcessorTime.TotalMilliseconds
+				$kernelmode1 = $kernelmode1 + $prosess.PrivilegedProcessorTime.TotalMilliseconds
 			}
 
 			Start-Sleep(1)
 
 			foreach ($proc in $procs) {
-				$usermode2 = $userMode2 + $proc.PrivilegedProcessorTime.TotalMilliseconds
-				$kernelmode2 = $kernelmode2 + $proc.PrivilegedProcessorTime.TotalMilliseconds
+				$usermode2 = $userMode2 + $prosess.PrivilegedProcessorTime.TotalMilliseconds
+				$kernelmode2 = $kernelmode2 + $prosess.PrivilegedProcessorTime.TotalMilliseconds
 			}
 
 			$user = $usermode2 - $usermode1
@@ -64,8 +57,8 @@ while ($ans -ne 9) {
 
 			$prosent = 100 / $sum
 
-			Write-Output ($user * $prosent + "% av det siste sekundet til usermode")
-			Write-Output ($kernel * $prosent + "% av det siste sekundet til kernelmode")
+			Write-Output "$user * $prosent % av det siste sekundet til usermode"
+			Write-Output "$kernel * $prosent % av det siste sekundet til kernelmode")
 		}
 
 		6 {
