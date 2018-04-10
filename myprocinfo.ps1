@@ -21,7 +21,7 @@ while ($ans -ne 9) {
 
 		2 {
 			$uptime = (Get-Date) - (Get-CimInstance -ClassName win32_operatingsystem).LastBootUpTime
-            Write-Output("Tid siden boot:" + $uptime.Hours + "h," + $uptime.Minutes + "m")
+            Write-Output("Tid siden boot:" + $uptime.Hours + "h " + $uptime.Minutes + "m")
 		}
 
 		3 {
