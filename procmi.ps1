@@ -3,7 +3,7 @@ $date = Get-Date -UFormat '%y%m%d-%H%M%S'
 
 for ($i=0; $i -lt $args.Count; $i++) {
 
-		$filnavn = $args[$i]+"--"+$date+".txt"
+		$filnavn = ""+$args[$i]+"--"+$date+".txt"
 
 		#"$args[$i]-{0:yyyyMMdd-HHmmss}.meminfo" -f (Get-Date)
 
