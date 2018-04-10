@@ -21,7 +21,7 @@ while ($ans -ne 9) {
 
 		2 {
 			$uptime = (Get-Date) - (Get-CimInstance -ClassName win32_operatingsystem).LastBootUpTime
-            Write-Output "Tid siden boot: $uptime.Hours h, $uptime.Minutes m"
+            Write-Output("Tid siden boot:" + $uptime.Hours + "h," + $uptime.Minutes + "m")
 		}
 
 		3 {
@@ -51,18 +51,11 @@ while ($ans -ne 9) {
 			}
 
 			$user = $usermode2 - $usermode1
-			$kernel = $kernelmode2 - $kernelmode1
-
-			Write-Output $user
-			Write-Output $kernel
+			$kernel = $kernelmode2 - $kernelmode
 
 			$sum = $user + $kernel
 
-			Write-output $sum
-
 			$prosent = 100 / $sum
-
-			Write-Output $prosent
 
 			$usermode = $user * $prosent
 			$kernelmode = $kernel * $prosent
@@ -73,7 +66,7 @@ while ($ans -ne 9) {
 
 		6 {
 			$interrupts = (Get-CimInstance -ClassName Win32_PerfFormattedData_Counters_ProcessorInformation).InterruptsPersec
-			Write-Output "Antall interrups i det siste sekundet: $interrupts[0]"
+			Write-Output ("Antall interrups i det siste sekundet: " + $interrupts[0] )
 		}
 
 		9 { Write-Output "Programmet er avsluttet" }
