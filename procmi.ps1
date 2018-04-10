@@ -8,7 +8,7 @@ for ($i=0; $i -lt $args.Count; $i++) {
 
 		New-Item -Path . -Itemype File -Name $filnavn -Force
 		Add-Content -Path $filnavn -Value (
-		"************** Minne info om prosess med PID" + $args[$i] + **************" +
+		"************** Minne info om prosess med PID" + $args[$i] + **************"
 		"Total bruk av virtuelt minne: " + $minne +
 		"Størrelse på Working Set: " + $workingSet )
 }
