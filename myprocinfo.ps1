@@ -34,7 +34,7 @@ while ($ans -ne 9) {
 
 			$tråder = (Get-CimInstance -ClassName win32_Thread | Get-Unique | Measure-Object).Count
             $prosesser = (Get-Process | Sort-Object name| Get-Unique | Measure-Object).count
-            Write-Host "Det finnes $tråder tråder"
+            Write-Output ("Det finnes" + $tråder + "tråder")
             Write-Host "Det finnes $prosesser prosesser"
 		}
 
@@ -46,26 +46,26 @@ while ($ans -ne 9) {
 		5 {
 			$process = (Get-Process -ComputerName)
 			foreach ($proc in $procs) {
-				$usermode1=$userMode1 + $proc.PrivilegedProcessorTime.TotalMilliseconds
-				kernelmode1=$kernelmode1 + $proc.PrivilegedProcessorTime.TotalMilliseconds
+				$usermode1 = $userMode1 + $proc.PrivilegedProcessorTime.TotalMilliseconds
+				$kernelmode1 = $kernelmode1 + $proc.PrivilegedProcessorTime.TotalMilliseconds
 			}
 
 			Start-Sleep(1)
 
 			foreach ($proc in $procs) {
-				$usermode2=$userMode2 + $proc.PrivilegedProcessorTime.TotalMilliseconds
-				kernelmode2=$kernelmode2 + $proc.PrivilegedProcessorTime.TotalMilliseconds
+				$usermode2 = $userMode2 + $proc.PrivilegedProcessorTime.TotalMilliseconds
+				$kernelmode2 = $kernelmode2 + $proc.PrivilegedProcessorTime.TotalMilliseconds
 			}
 
-			$user=$((usermode2-usermode1))
-			$kernel=$((kernelmode2-kernelmode1))
+			$user = $usermode2 - $usermode1
+			$kernel = $kernelmode2 - $kernelmode1
 
-			$sum=$((user + kernel))
+			$sum = $user + $kernel
 
-			$prosent=$((100 / sum))
+			$prosent = 100 / $sum
 
-			Write-Host "$((user*prosent)) % av det siste sekundet til usermode"
-			Write-host "$((kernel*prosent)) % av det siste sekundet til kernelmode"
+			Write-Output($user * $prosent + "% av det siste sekundet til usermode")
+			Write-host "$kernel * $prosent % av det siste sekundet til kernelmode"
 		}
 
 		6 {
