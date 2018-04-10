@@ -1,7 +1,6 @@
-# oblig3_os
+# Kvalitetssikring
 
-
-statisk kode analyse
+statisk kode analyse: 
 https://github.com/PowerShell/PSScriptAnalyzer
 
 # Installering
