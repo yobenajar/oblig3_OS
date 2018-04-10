@@ -32,9 +32,9 @@ while ($ans -ne 9) {
 			#Write-Host "Antall prosesser: $([int]@(Get-Process).Count)"
 			#Write-Host "Antall tråder: $($count)"
 
-			$tråder = (Get-CimInstance -ClassName win32_Thread | Get-Unique | Measure-Object).Count
+			$trader = (Get-CimInstance -ClassName win32_Thread | Get-Unique | Measure-Object).Count
             $prosesser = (Get-Process | Sort-Object name| Get-Unique | Measure-Object).count
-            Write-Output ("Det finnes" + $tråder + "tråder")
+            Write-Output ("Det finnes" + $trader + "tråder")
             Write-Host "Det finnes $prosesser prosesser"
 		}
 
