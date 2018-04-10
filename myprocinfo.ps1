@@ -44,8 +44,8 @@ while ($ans -ne 9) {
 		}
 
 		5 {
-			$process = (Get-Process -ComputerName)
-			foreach ($proc in $procs) {
+			$prosesser = (Get-Process -ComputerName .)
+			foreach ($prosess in $prosesser) {
 				$usermode1 = $userMode1 + $proc.PrivilegedProcessorTime.TotalMilliseconds
 				$kernelmode1 = $kernelmode1 + $proc.PrivilegedProcessorTime.TotalMilliseconds
 			}
