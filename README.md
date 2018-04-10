@@ -2,7 +2,7 @@
 
 
 # statisk kode analyse
-# https://github.com/PowerShell/PSScriptAnalyzer
+https://github.com/PowerShell/PSScriptAnalyzer
 
 # Installering
 Install-Module -Name PSScriptAnalyzer
