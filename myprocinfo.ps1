@@ -57,13 +57,16 @@ while ($ans -ne 9) {
 
 			$prosent = 100 / $sum
 
-			Write-Output "$user * $prosent % av det siste sekundet til usermode"
-			Write-Output "$kernel * $prosent % av det siste sekundet til kernelmode"
+			$usermode = $user * $prosent
+			$kernelmode = $kernel * $prosent
+
+			Write-Output "$usermode % av det siste sekundet til usermode"
+			Write-Output "$kernelmode % av det siste sekundet til kernelmode"
 		}
 
 		6 {
 			$interrupts = (Get-CimInstance -ClassName Win32_PerfFormattedData_Counters_ProcessorInformation).InterruptsPersec
-			Write-Output "Antall interrups i det siste sekundet: $interrupts"
+			Write-Output "Antall interrups i det siste sekundet: $interrupts[0]"
 		}
 
 		9 { Write-Output "Programmet er avsluttet" }
