@@ -57,6 +57,8 @@ while ($ans -ne 9) {
 
 			$prosent = 100 / $sum
 
+			Write-Output ($prosent)
+
 			$usermode = $user * $prosent
 			$kernelmode = $kernel * $prosent
 
