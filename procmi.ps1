@@ -10,6 +10,5 @@ for ($i=0; $i -lt $pid.Count; $i++) {
 		Add-Content -Path $filnavn -Value ("
 		********* Minne info om prosess med PID ********* " + $pid[$i] +
 		"`nTotal bruk av virtuelt minne: " + $minne + "MB" +
-		"`nStorrelse paa Working Set: " + $workingSet
-		+ "KB")
+		"`nStorrelse paa Working Set: " + $workingSet + "KB" )
 }
